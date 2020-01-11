@@ -15,7 +15,7 @@ double f(double x, double y)
 double dfx(double x, double y) { return -y + 6*x - 8; }
 double dfy(double x, double y) { return 2*y - x + 11; }
 
-double g(double x) { return 1.5*exp(1.5*x); }
+double g(double x) { return pow(2.718, 1.5 * x); }
 
 double w(double x) { return (x - 3.7) + pow(cos(x + 1.2), 3); }
 double dwx(double x) {return 1 - 3 * pow(cos(x + 1.2), 2) * sin(x + 1.2);}
