@@ -1,2 +1,1 @@
-# MNUM_MIEIC
-Resolução de exercícios da cadeira Métodos Numéricos (2o ano, 1o semestre, FEUP - MIEIC)
+Métodos Numéricos | MIEIC | 2º Ano | 1º Semestre
