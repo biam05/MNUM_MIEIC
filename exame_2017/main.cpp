@@ -1,5 +1,6 @@
 #include <cmath>
 #include <iostream>
+#include <vector>
 
 using namespace std;
 
@@ -14,6 +15,10 @@ double f3(double x) { return log(5 + x); }
 
 double dCdt(double C, double T) { return -exp(-0.5 / (T + 273))*C; }
 double dTdt(double C, double T) { return 30 * exp(-0.5 / (T + 273)) * C - 0.5 * (T - 20); }
+
+double w(double x, double y) { return -1.1*x*y + 12 * y + 7 * pow(x, 2) - 8 * x; }
+double wdx(double x, double y) { return -1.1 * y + 14 * x - 8; }
+double wdy(double x, double y) { return -1.1*x + 12; }
 
 void aurea(double x1, double x2, double precision)
 {
@@ -133,6 +138,37 @@ double mrk4(double h, double C, double T)
 	return T;
 }
 
+vector<double> gradiente(double x, double y)
+{
+	vector<double> gradiente;
+	gradiente.push_back(wdx(x, y));
+	gradiente.push_back(wdy(x, y));
+	return gradiente;
+}
+
+void mgradiente(double x, double y, double lambda)
+{
+	vector<double> Xn = { 1000,1000 };
+	vector<double> Xn1 = { x,y };
+	for (int i = 0; i < 2; i++)
+	{
+		cout << "iteracao: " << i << "\tw(x,y): " << w(Xn1[0], Xn1[1]) << endl;
+
+		Xn[0] = Xn1[0];
+		Xn[1] = Xn1[1];
+		Xn1[0] = Xn[0] - lambda * gradiente(Xn[0], Xn[1])[0];
+		Xn1[1] = Xn[1] - lambda * gradiente(Xn[0], Xn[1])[1];
+
+		if (Xn1[0] < Xn[0] && Xn1[1] < Xn[1])
+			lambda = 2 * lambda;
+		else
+		{
+			Xn1[0] = Xn[0];
+			lambda = lambda / 2.0;
+		}		
+	}
+}
+
 int main()
 {
 	cout << "\t\tMETODO DA SECCAO AUREA - EX1" << endl << endl;
@@ -191,6 +227,9 @@ int main()
 	cout << "Qc: " << QCTeuler << endl;
 	double ETeuler = (Teuler3 - Teuler2);
 	cout << "E: " << ETeuler << endl;
+
+	cout << "\n\t\tMETODO DO GRADIENTE - EX5" << endl << endl;
+	mgradiente(3, 1, 0.1);
 
 	return 0;
 }
