@@ -69,7 +69,7 @@ void meliminacaodegaus()
 
 	double result;
 
-	//começar a substituir os valores dados em b pelos valores na matriz ( z = b[2]; etc)
+	//comeÃ§ar a substituir os valores dados em b pelos valores na matriz ( z = b[2]; etc)
 	for (int i = 2; i > -1; i--)
 	{
 		result = b[i];
@@ -81,7 +81,7 @@ void meliminacaodegaus()
 	}
 	cout << "x1 = " << sol[0] << endl << "x2 = " << sol[1] << endl << "x3 = " << sol[2] << endl;
 
-	//resolver tudo igual so q agora o b é o erro (estabiliidade externa)
+	//resolver tudo igual so q agora o b Ã© o erro (estabiliidade externa)
 	vector<double> err = { 0.05 - 0.05*sol[0] - 0.05*sol[1] - 0.05*sol[2] , 0.05 - 0.05*sol[0] - 0.05*sol[1] - 0.05*sol[2] , 0.05 - 0.05*sol[0] - 0.05*sol[1] - 0.05*sol[2] };
 	for (int i = 0; i < 3; i++)
 	{
