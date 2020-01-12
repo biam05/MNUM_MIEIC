@@ -13,7 +13,7 @@ double wdy(double x, double y) { return -1.7*x + 12; }
 double f1(double x, double y) { return pow(x, 2) - y - 2; }
 double df1x(double x, double y) { return 2 * x; }
 double df1y(double x, double y) { return -1; }
-double f2(double x, double y) { return -x * pow(y, 2) - 2; }
+double f2(double x, double y) { return -x + pow(y, 2) - 2; }
 double df2x(double x, double y) { return -1; }
 double df2y(double x, double y) { return 2 * y; }
 
